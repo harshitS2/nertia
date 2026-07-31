@@ -1,0 +1,40 @@
+# Vnertia.com — .gitignore
+
+# Node modules
+node_modules/
+**/node_modules/
+
+# Build output
+.next/
+dist/
+out/
+build/
+
+# Environment files — never commit these
+.env
+.env.local
+.env.*.local
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor files
+.vscode/settings.json
+.idea/
+*.swp
+*.swo
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# TypeScript build info
+*.tsbuildinfo
+
+# Cache
+.cache/
+.turbo/
