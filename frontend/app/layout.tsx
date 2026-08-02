@@ -19,6 +19,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
+import { ThemeProvider } from "@/context/ThemeContext";
 
 // ---------------------------------------------------------------------------
 // Font — loaded at build time, zero layout shift, self-hosted by Next.js
@@ -115,18 +116,34 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={inter.variable}>
-      <body className="font-inter antialiased bg-[#060f10] text-white overflow-x-hidden">
-        {/* Global navigation — sticky, appears on every page */}
-        <Navbar />
+    <html lang="en" className={inter.variable} suppressHydrationWarning>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                try {
+                  var theme = localStorage.getItem('vnertia-theme') || 'dark';
+                  document.documentElement.setAttribute('data-theme', theme);
+                } catch (e) {}
+              })();
+            `,
+          }}
+        />
+      </head>
+      <body className="font-inter antialiased bg-navy-deep text-text-primary overflow-x-hidden">
+        <ThemeProvider>
+          {/* Global navigation — sticky, appears on every page */}
+          <Navbar />
 
-        {/* Page content — supplied by each route's page.tsx */}
-        <main>
-          {children}
-        </main>
+          {/* Page content — supplied by each route's page.tsx */}
+          <main>
+            {children}
+          </main>
 
-        {/* Global footer */}
-        <Footer />
+          {/* Global footer */}
+          <Footer />
+        </ThemeProvider>
       </body>
     </html>
   );

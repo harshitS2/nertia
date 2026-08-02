@@ -50,10 +50,10 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-[#060f10] text-white/70">
+    <footer className="bg-navy-deep text-text-secondary">
 
       {/* Top gradient border — mirrors the brand arc gradient */}
-      <div className="h-px w-full bg-gradient-to-r from-transparent via-[#25C4CB] to-transparent opacity-60" />
+      <div className="h-px w-full bg-gradient-to-r from-transparent via-teal-primary to-transparent opacity-60" />
 
       {/* ================================================================ */}
       {/* Main footer body                                                  */}
@@ -63,8 +63,8 @@ export default function Footer() {
 
           {/* ---- Column 1: Brand ---- */}
           <div className="lg:col-span-2">
-            <Logo variant="dark" size={160} className="mb-5" />
-            <p className="text-sm text-white/50 leading-relaxed max-w-sm">
+            <Logo size={160} className="mb-5" />
+            <p className="text-sm text-text-muted leading-relaxed max-w-sm">
               Where effort turns into momentum—and momentum turns into lasting success.
               We are the growth partner that stays.
             </p>
@@ -72,7 +72,7 @@ export default function Footer() {
             {/* Contact email placeholder */}
             <a
               href="mailto:hello@vnertia.com"
-              className="inline-flex items-center gap-2 mt-5 text-sm text-[#25C4CB] hover:text-[#94D3D8] transition-colors group"
+              className="inline-flex items-center gap-2 mt-5 text-sm text-teal-primary hover:text-teal-light transition-colors group"
             >
               <Mail size={14} />
               hello@vnertia.com
@@ -86,7 +86,7 @@ export default function Footer() {
           {/* ---- Columns 2 & 3: Quick links ---- */}
           {FOOTER_LINKS.map((section) => (
             <div key={section.heading}>
-              <h3 className="text-white text-xs font-semibold tracking-[0.18em] uppercase mb-4">
+              <h3 className="text-text-primary text-xs font-semibold tracking-[0.18em] uppercase mb-4">
                 {section.heading}
               </h3>
               <ul className="space-y-2.5">
@@ -94,7 +94,7 @@ export default function Footer() {
                   <li key={link.label}>
                     <a
                       href={link.href}
-                      className="text-sm text-white/50 hover:text-[#25C4CB] transition-colors duration-200"
+                      className="text-sm text-text-secondary hover:text-teal-primary transition-colors duration-200"
                     >
                       {link.label}
                     </a>
@@ -109,20 +109,20 @@ export default function Footer() {
       {/* ================================================================ */}
       {/* Bottom bar                                                        */}
       {/* ================================================================ */}
-      <div className="border-t border-white/5">
+      <div className="border-t border-glass-border">
         <div className="max-w-7xl mx-auto px-6 py-6 flex flex-col sm:flex-row items-center justify-between gap-4">
 
           {/* Copyright */}
-          <p className="text-xs text-white/30">
+          <p className="text-xs text-text-muted">
             © {currentYear} Vnertia. All rights reserved.
           </p>
 
           {/* BUILD · SCALE · LEAD triptych — from brand guide */}
-          <p className="text-xs font-semibold tracking-[0.25em] uppercase text-white/30">
+          <p className="text-xs font-semibold tracking-[0.25em] uppercase text-text-muted">
             BUILD{" "}
-            <span className="text-[#25C4CB] mx-1">·</span>
+            <span className="text-teal-primary mx-1">·</span>
             {" "}SCALE{" "}
-            <span className="text-[#25C4CB] mx-1">·</span>
+            <span className="text-teal-primary mx-1">·</span>
             {" "}LEAD
           </p>
 
@@ -135,7 +135,7 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={label}
-                className="w-8 h-8 flex items-center justify-center rounded-lg bg-white/5 hover:bg-[#25C4CB]/20 hover:text-[#25C4CB] transition-all duration-200"
+                className="w-8 h-8 flex items-center justify-center rounded-lg bg-glass-bg border border-glass-border hover:bg-teal-primary/20 hover:text-teal-primary transition-all duration-200"
               >
                 <Icon size={14} />
               </a>

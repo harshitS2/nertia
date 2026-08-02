@@ -92,35 +92,35 @@ export default function ContactSection() {
     }
   };
 
-  // Shared input class — dark glass input field
+  // Shared input class — dynamic glass input field
   const inputClass = [
     "w-full px-4 py-3 rounded-xl",
-    "bg-white/5 border border-white/10",
-    "text-white placeholder-white/30",
-    "text-sm focus:outline-none focus:border-[#25C4CB]/60 focus:bg-white/8",
+    "bg-glass-bg border border-glass-border",
+    "text-text-primary placeholder-text-muted/50",
+    "text-sm focus:outline-none focus:border-teal-primary/60 focus:bg-glass-bg/20",
     "transition-all duration-200",
-    "hover:border-white/20",
+    "hover:border-teal-primary/20",
   ].join(" ");
 
   return (
     <section
       id="contact"
       ref={ref}
-      className="relative py-28 md:py-36 overflow-hidden bg-[#060f10]"
+      className="relative py-28 md:py-36 overflow-hidden bg-navy-deep"
     >
       {/* Gradient backdrop — teal wash from left */}
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
           background:
-            "radial-gradient(ellipse 80% 60% at 10% 50%, rgba(37,196,203,0.08) 0%, transparent 70%), " +
-            "radial-gradient(ellipse 50% 80% at 90% 80%, rgba(26,140,150,0.06) 0%, transparent 70%)",
+            "radial-gradient(ellipse 80% 60% at 10% 50%, color-mix(in srgb, var(--teal-primary) 8%, transparent) 0%, transparent 70%), " +
+            "radial-gradient(ellipse 50% 80% at 90% 80%, color-mix(in srgb, var(--teal-dark) 6%, transparent) 0%, transparent 70%)",
         }}
         aria-hidden="true"
       />
 
       {/* Top border gradient */}
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#25C4CB]/40 to-transparent" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-teal-primary/40 to-transparent" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-6">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
@@ -135,18 +135,18 @@ export default function ContactSection() {
 
             <motion.h2
               variants={fadeUpVariants} initial="hidden" animate={inView ? "visible" : "hidden"} custom={0.1}
-              className="mt-4 text-4xl md:text-5xl font-black text-white leading-tight tracking-tight"
+              className="mt-4 text-4xl md:text-5xl font-black text-text-primary leading-tight tracking-tight"
             >
               Let&apos;s build it
               <br />
-              <span className="bg-gradient-to-r from-[#25C4CB] to-[#94D3D8] bg-clip-text text-transparent">
+              <span className="text-gradient-teal">
                 — together.
               </span>
             </motion.h2>
 
             <motion.p
               variants={fadeUpVariants} initial="hidden" animate={inView ? "visible" : "hidden"} custom={0.2}
-              className="mt-5 text-white/50 text-lg leading-relaxed max-w-md"
+              className="mt-5 text-text-secondary text-lg leading-relaxed max-w-md"
             >
               Growth isn&apos;t a one-time effort. It&apos;s a system, a mindset, and a continuous
               process. Tell us about your brand — and let&apos;s start building momentum.
@@ -162,8 +162,8 @@ export default function ContactSection() {
                 "Response within 24 hours.",
                 "Built for founders and growth teams.",
               ].map((point) => (
-                <div key={point} className="flex items-center gap-2.5 text-sm text-white/50">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#25C4CB] flex-shrink-0" />
+                <div key={point} className="flex items-center gap-2.5 text-sm text-text-secondary">
+                  <span className="w-1.5 h-1.5 rounded-full bg-teal-primary flex-shrink-0" />
                   {point}
                 </div>
               ))}
@@ -179,13 +179,13 @@ export default function ContactSection() {
             <form
               onSubmit={handleSubmit}
               noValidate
-              className="p-8 rounded-2xl bg-white/[0.03] border border-white/8 space-y-5"
+              className="p-8 rounded-2xl bg-glass-bg border border-glass-border space-y-5"
               aria-label="Contact form"
             >
               {/* Row: Name + Company */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label htmlFor="contact-name" className="block text-xs font-medium text-white/40 mb-1.5 uppercase tracking-wider">
+                  <label htmlFor="contact-name" className="block text-xs font-medium text-text-muted mb-1.5 uppercase tracking-wider">
                     Name *
                   </label>
                   <input
@@ -201,7 +201,7 @@ export default function ContactSection() {
                   />
                 </div>
                 <div>
-                  <label htmlFor="contact-company" className="block text-xs font-medium text-white/40 mb-1.5 uppercase tracking-wider">
+                  <label htmlFor="contact-company" className="block text-xs font-medium text-text-muted mb-1.5 uppercase tracking-wider">
                     Company
                   </label>
                   <input
@@ -219,7 +219,7 @@ export default function ContactSection() {
 
               {/* Email */}
               <div>
-                <label htmlFor="contact-email" className="block text-xs font-medium text-white/40 mb-1.5 uppercase tracking-wider">
+                <label htmlFor="contact-email" className="block text-xs font-medium text-text-muted mb-1.5 uppercase tracking-wider">
                   Email *
                 </label>
                 <input
@@ -237,7 +237,7 @@ export default function ContactSection() {
 
               {/* Message */}
               <div>
-                <label htmlFor="contact-message" className="block text-xs font-medium text-white/40 mb-1.5 uppercase tracking-wider">
+                <label htmlFor="contact-message" className="block text-xs font-medium text-text-muted mb-1.5 uppercase tracking-wider">
                   Message *
                 </label>
                 <textarea
@@ -270,7 +270,7 @@ export default function ContactSection() {
 
               {/* Success feedback */}
               {status === "success" && (
-                <div className="flex items-start gap-2.5 p-4 rounded-xl bg-[#25C4CB]/10 border border-[#25C4CB]/25 text-[#25C4CB] text-sm">
+                <div className="flex items-start gap-2.5 p-4 rounded-xl bg-teal-primary/10 border border-teal-primary/25 text-teal-primary text-sm">
                   <CheckCircle2 size={16} className="flex-shrink-0 mt-0.5" />
                   <span>
                     Message sent! We&apos;ll be in touch within 24 hours.

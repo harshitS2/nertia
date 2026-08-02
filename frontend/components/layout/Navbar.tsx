@@ -22,6 +22,7 @@ import React, { useState, useEffect, useCallback } from "react";
 import Logo from "@/components/ui/Logo";
 import Button from "@/components/ui/Button";
 import { Menu, X } from "lucide-react";
+import ThemeToggle from "@/components/ui/ThemeToggle";
 
 // Navigation link definitions — label + anchor href
 const NAV_LINKS = [
@@ -120,7 +121,7 @@ export default function Navbar() {
           "fixed top-0 left-0 right-0 z-50",
           "transition-all duration-300 ease-out",
           scrolled
-            ? "bg-[#0D2326]/90 backdrop-blur-md border-b border-white/5 py-3 shadow-2xl"
+            ? "bg-navy/90 backdrop-blur-md border-b border-glass-border py-3 shadow-2xl"
             : "bg-transparent py-5",
         ].join(" ")}
       >
@@ -133,7 +134,7 @@ export default function Navbar() {
             aria-label="Vnertia — go to top"
             className="flex-shrink-0"
           >
-            <Logo variant="dark" size={150} />
+            <Logo size={150} />
           </a>
 
           {/* Desktop nav links */}
@@ -149,10 +150,10 @@ export default function Navbar() {
                     "text-sm font-medium transition-colors duration-200",
                     "relative pb-0.5",
                     "after:absolute after:bottom-0 after:left-0 after:h-px",
-                    "after:bg-[#25C4CB] after:transition-all after:duration-300",
+                    "after:bg-teal-primary after:transition-all after:duration-300",
                     isActive
-                      ? "text-[#25C4CB] after:w-full"
-                      : "text-white/70 hover:text-white after:w-0 hover:after:w-full",
+                      ? "text-teal-primary after:w-full"
+                      : "text-text-secondary hover:text-text-primary after:w-0 hover:after:w-full",
                   ].join(" ")}
                 >
                   {label}
@@ -162,7 +163,8 @@ export default function Navbar() {
           </nav>
 
           {/* Desktop CTA */}
-          <div className="hidden md:block">
+          <div className="hidden md:flex items-center gap-4">
+            <ThemeToggle />
             <Button
               variant="primary"
               size="sm"
@@ -174,7 +176,7 @@ export default function Navbar() {
 
           {/* Mobile hamburger */}
           <button
-            className="md:hidden text-white/80 hover:text-white transition-colors p-2 rounded-lg hover:bg-white/5"
+            className="md:hidden text-text-secondary hover:text-text-primary transition-colors p-2 rounded-lg hover:bg-glass-bg"
             onClick={() => setMobileOpen((v) => !v)}
             aria-label={mobileOpen ? "Close menu" : "Open menu"}
             aria-expanded={mobileOpen}
@@ -202,7 +204,7 @@ export default function Navbar() {
       <div
         className={[
           "fixed top-0 right-0 bottom-0 z-50 w-72 md:hidden",
-          "bg-[#0D2326] border-l border-white/10",
+          "bg-navy border-l border-glass-border",
           "flex flex-col",
           "transition-transform duration-300 ease-out",
           mobileOpen ? "translate-x-0" : "translate-x-full",
@@ -212,11 +214,11 @@ export default function Navbar() {
         aria-label="Mobile navigation"
       >
         {/* Drawer header */}
-        <div className="flex items-center justify-between px-6 py-5 border-b border-white/10">
-          <Logo variant="dark" size={120} />
+        <div className="flex items-center justify-between px-6 py-5 border-b border-glass-border">
+          <Logo size={120} />
           <button
             onClick={() => setMobileOpen(false)}
-            className="text-white/60 hover:text-white transition-colors p-1.5 rounded-lg hover:bg-white/5"
+            className="text-text-muted hover:text-text-primary transition-colors p-1.5 rounded-lg hover:bg-glass-bg"
             aria-label="Close menu"
           >
             <X size={20} />
@@ -236,8 +238,8 @@ export default function Navbar() {
                   "text-left px-4 py-3 rounded-xl text-base font-medium",
                   "transition-all duration-200",
                   isActive
-                    ? "text-[#25C4CB] bg-[#25C4CB]/10"
-                    : "text-white/70 hover:text-white hover:bg-white/5",
+                    ? "text-teal-primary bg-teal-primary/10"
+                    : "text-text-secondary hover:text-text-primary hover:bg-glass-bg",
                 ].join(" ")}
               >
                 {label}
@@ -247,7 +249,11 @@ export default function Navbar() {
         </nav>
 
         {/* Drawer CTA */}
-        <div className="px-6 pb-8">
+        <div className="px-6 pb-8 space-y-4">
+          <div className="flex items-center justify-between border-t border-glass-border pt-4">
+            <span className="text-xs font-semibold tracking-wider text-text-muted uppercase">Theme</span>
+            <ThemeToggle />
+          </div>
           <Button
             variant="primary"
             size="md"

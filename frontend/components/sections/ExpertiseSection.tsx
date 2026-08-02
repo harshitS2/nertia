@@ -127,14 +127,14 @@ export default function ExpertiseSection() {
     <section
       id="services"
       ref={ref}
-      className="relative py-28 md:py-36 bg-[#0D2326] overflow-hidden"
+      className="relative py-28 md:py-36 bg-navy overflow-hidden"
     >
       {/* Background texture — faint diagonal lines */}
       <div
         className="absolute inset-0 opacity-[0.03]"
         style={{
           backgroundImage:
-            "repeating-linear-gradient(45deg, #25C4CB 0px, #25C4CB 1px, transparent 1px, transparent 40px)",
+            "repeating-linear-gradient(45deg, var(--teal-primary) 0px, var(--teal-primary) 1px, transparent 1px, transparent 40px)",
         }}
         aria-hidden="true"
       />
@@ -149,17 +149,17 @@ export default function ExpertiseSection() {
 
           <motion.h2
             variants={fadeUpVariants} initial="hidden" animate={inView ? "visible" : "hidden"} custom={0.1}
-            className="mt-4 text-4xl md:text-5xl font-black text-white leading-tight tracking-tight"
+            className="mt-4 text-4xl md:text-5xl font-black text-text-primary leading-tight tracking-tight"
           >
             One engine.{" "}
-            <span className="bg-gradient-to-r from-[#25C4CB] to-[#94D3D8] bg-clip-text text-transparent">
+            <span className="text-gradient-teal">
               Six capabilities.
             </span>
           </motion.h2>
 
           <motion.p
             variants={fadeUpVariants} initial="hidden" animate={inView ? "visible" : "hidden"} custom={0.2}
-            className="mt-4 text-white/50 text-lg leading-relaxed"
+            className="mt-4 text-text-secondary text-lg leading-relaxed"
           >
             We don&apos;t believe in isolated services. Every capability is designed to work
             together — creating a unified growth engine for consistent results.
@@ -185,24 +185,24 @@ export default function ExpertiseSection() {
                 "transition-all duration-300 ease-out",
                 "border",
                 featured
-                  ? "bg-gradient-to-br from-[#25C4CB]/15 to-[#1A8C96]/5 border-[#25C4CB]/40 hover:border-[#25C4CB]/70"
-                  : "bg-white/[0.03] border-white/8 hover:border-[#25C4CB]/30 hover:bg-white/[0.05]",
-                "hover:-translate-y-1 hover:shadow-xl hover:shadow-teal-900/20",
+                  ? "bg-gradient-to-br from-teal-primary/15 to-teal-dark/5 border-teal-primary/40 hover:border-teal-primary/70"
+                  : "bg-glass-bg border-glass-border hover:border-teal-primary/30 hover:bg-glass-bg/15",
+                "hover:-translate-y-1 hover:shadow-xl hover:shadow-teal-950/20",
               ].join(" ")}
             >
               {/* Featured badge */}
               {featured && (
-                <span className="absolute top-5 right-5 text-[10px] font-bold tracking-widest uppercase text-[#25C4CB] bg-[#25C4CB]/10 px-2.5 py-1 rounded-full">
+                <span className="absolute top-5 right-5 text-[10px] font-bold tracking-widest uppercase text-teal-primary bg-teal-primary/10 px-2.5 py-1 rounded-full">
                   Foundation
                 </span>
               )}
 
               {/* Number + Icon row */}
               <div className="flex items-start justify-between mb-5">
-                <span className="text-xs font-bold tracking-wider text-white/20">{number}</span>
+                <span className="text-xs font-bold tracking-wider text-text-muted/30">{number}</span>
                 <div className={[
-                  "w-11 h-11 rounded-xl flex items-center justify-center",
-                  featured ? "bg-[#25C4CB]/20 text-[#25C4CB]" : "bg-white/5 text-white/40 group-hover:bg-[#25C4CB]/10 group-hover:text-[#25C4CB]",
+                  "w-11 h-11 rounded-xl flex items-center justify-center border border-glass-border",
+                  featured ? "bg-teal-primary/20 text-teal-primary border-teal-primary/30" : "bg-glass-bg text-text-muted group-hover:bg-teal-primary/10 group-hover:text-teal-primary group-hover:border-teal-primary/20",
                   "transition-all duration-300",
                 ].join(" ")}>
                   <Icon size={20} />
@@ -210,10 +210,10 @@ export default function ExpertiseSection() {
               </div>
 
               {/* Title */}
-              <h3 className="text-white font-bold text-xl mb-3 leading-tight">{title}</h3>
+              <h3 className="text-text-primary font-bold text-xl mb-3 leading-tight">{title}</h3>
 
               {/* Description */}
-              <p className="text-white/50 text-sm leading-relaxed">{description}</p>
+              <p className="text-text-secondary text-sm leading-relaxed">{description}</p>
 
               {/* Deliverables — shown when card is expanded */}
               <div
@@ -222,14 +222,14 @@ export default function ExpertiseSection() {
                   expanded === index ? "max-h-64 mt-5 opacity-100" : "max-h-0 mt-0 opacity-0",
                 ].join(" ")}
               >
-                <div className="border-t border-white/10 pt-4">
-                  <p className="text-[10px] font-semibold tracking-[0.15em] uppercase text-[#25C4CB] mb-3">
+                <div className="border-t border-glass-border pt-4">
+                  <p className="text-[10px] font-semibold tracking-[0.15em] uppercase text-teal-primary mb-3">
                     What we deliver
                   </p>
                   <ul className="space-y-2">
                     {deliverables.map((item) => (
-                      <li key={item} className="flex items-start gap-2 text-sm text-white/60">
-                        <span className="mt-1.5 w-1 h-1 rounded-full bg-[#25C4CB] flex-shrink-0" />
+                      <li key={item} className="flex items-start gap-2 text-sm text-text-secondary">
+                        <span className="mt-1.5 w-1 h-1 rounded-full bg-teal-primary flex-shrink-0" />
                         {item}
                       </li>
                     ))}
@@ -238,7 +238,7 @@ export default function ExpertiseSection() {
               </div>
 
               {/* Expand hint */}
-              <div className="mt-5 flex items-center gap-1.5 text-xs text-white/25 group-hover:text-[#25C4CB]/60 transition-colors duration-200">
+              <div className="mt-5 flex items-center gap-1.5 text-xs text-text-muted/50 group-hover:text-teal-primary/70 transition-colors duration-200">
                 <span>{expanded === index ? "Click to collapse" : "Click to see deliverables"}</span>
                 <span
                   className={[
@@ -258,7 +258,7 @@ export default function ExpertiseSection() {
           variants={fadeUpVariants} initial="hidden" animate={inView ? "visible" : "hidden"} custom={0.6}
           className="mt-16 text-center"
         >
-          <p className="text-white/30 text-base italic">
+          <p className="text-text-muted/50 text-base italic">
             &ldquo;Growth isn&apos;t a one-time effort. It&apos;s a system, a mindset, and a continuous process.&rdquo;
           </p>
         </motion.div>

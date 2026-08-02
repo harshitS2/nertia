@@ -48,7 +48,7 @@ export default function HeroSection() {
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex flex-col justify-center overflow-hidden bg-[#0D2326]"
+      className="relative min-h-screen flex flex-col justify-center overflow-hidden bg-navy"
     >
       {/* ================================================================ */}
       {/* Background layers                                                 */}
@@ -59,7 +59,7 @@ export default function HeroSection() {
         className="absolute inset-0 opacity-[0.07]"
         style={{
           backgroundImage:
-            "radial-gradient(circle, #25C4CB 1px, transparent 1px)",
+            "radial-gradient(circle, var(--teal-primary) 1px, transparent 1px)",
           backgroundSize: "40px 40px",
         }}
         aria-hidden="true"
@@ -69,7 +69,7 @@ export default function HeroSection() {
       <div
         className="absolute -top-40 -right-40 w-[600px] h-[600px] rounded-full opacity-[0.12]"
         style={{
-          background: "radial-gradient(circle, #25C4CB 0%, transparent 70%)",
+          background: "radial-gradient(circle, var(--teal-primary) 0%, transparent 70%)",
         }}
         aria-hidden="true"
       />
@@ -78,7 +78,7 @@ export default function HeroSection() {
       <div
         className="absolute -bottom-20 -left-20 w-[400px] h-[400px] rounded-full opacity-[0.08]"
         style={{
-          background: "radial-gradient(circle, #1A8C96 0%, transparent 70%)",
+          background: "radial-gradient(circle, var(--teal-dark) 0%, transparent 70%)",
         }}
         aria-hidden="true"
       />
@@ -91,8 +91,8 @@ export default function HeroSection() {
           border: "2px solid transparent",
           borderRadius: "50%",
           background:
-            "linear-gradient(#0D2326, #0D2326) padding-box, " +
-            "conic-gradient(from 132deg, #25C4CB 0deg, #1A8C96 176deg, transparent 176deg) border-box",
+            "linear-gradient(var(--bg-secondary), var(--bg-secondary)) padding-box, " +
+            "conic-gradient(from 132deg, var(--teal-primary) 0deg, var(--teal-dark) 176deg, transparent 176deg) border-box",
           animation: "arcSpin 12s linear infinite",
         }}
       />
@@ -104,8 +104,8 @@ export default function HeroSection() {
           border: "1.5px solid transparent",
           borderRadius: "50%",
           background:
-            "linear-gradient(#0D2326, #0D2326) padding-box, " +
-            "conic-gradient(from 132deg, #94D3D8 0deg, transparent 140deg) border-box",
+            "linear-gradient(var(--bg-secondary), var(--bg-secondary)) padding-box, " +
+            "conic-gradient(from 132deg, var(--teal-light) 0deg, transparent 140deg) border-box",
           animation: "arcSpin 18s linear infinite reverse",
         }}
       />
@@ -123,8 +123,8 @@ export default function HeroSection() {
           custom={0}
           className="mb-6"
         >
-          <span className="inline-flex items-center gap-2 text-xs font-semibold tracking-[0.2em] uppercase text-[#25C4CB]">
-            <span className="block h-px w-6 bg-gradient-to-r from-[#25C4CB] to-[#1A8C96]" />
+          <span className="inline-flex items-center gap-2 text-xs font-semibold tracking-[0.2em] uppercase text-teal-primary">
+            <span className="block h-px w-6 bg-gradient-to-r from-teal-primary to-teal-dark" />
             Growth · Strategy · Momentum
           </span>
         </motion.div>
@@ -135,11 +135,11 @@ export default function HeroSection() {
           initial="hidden"
           animate="visible"
           custom={0.1}
-          className="text-5xl md:text-6xl lg:text-7xl font-black text-white leading-[1.05] tracking-tight max-w-4xl"
+          className="text-5xl md:text-6xl lg:text-7xl font-black text-text-primary leading-[1.05] tracking-tight max-w-4xl"
         >
           Where Effort
           <br />
-          <span className="bg-gradient-to-r from-[#25C4CB] to-[#94D3D8] bg-clip-text text-transparent">
+          <span className="text-gradient-teal">
             Turns Into
           </span>
           <br />
@@ -152,7 +152,7 @@ export default function HeroSection() {
           initial="hidden"
           animate="visible"
           custom={0.22}
-          className="mt-7 text-lg md:text-xl text-white/55 max-w-xl leading-relaxed"
+          className="mt-7 text-lg md:text-xl text-text-secondary max-w-xl leading-relaxed"
         >
           We don&apos;t chase growth. We build it — with structured thinking,
           practical execution, and systems designed for lasting results.
@@ -192,12 +192,12 @@ export default function HeroSection() {
         >
           {STATS.map(({ icon: Icon, value, label }) => (
             <div key={label} className="flex items-center gap-3">
-              <div className="w-9 h-9 rounded-xl bg-[#25C4CB]/10 flex items-center justify-center flex-shrink-0">
-                <Icon size={16} className="text-[#25C4CB]" />
+              <div className="w-9 h-9 rounded-xl bg-teal-primary/10 flex items-center justify-center flex-shrink-0">
+                <Icon size={16} className="text-teal-primary" />
               </div>
               <div>
-                <div className="text-2xl font-black text-white">{value}</div>
-                <div className="text-xs text-white/40 mt-0.5">{label}</div>
+                <div className="text-2xl font-black text-text-primary">{value}</div>
+                <div className="text-xs text-text-muted mt-0.5">{label}</div>
               </div>
             </div>
           ))}
@@ -217,11 +217,11 @@ export default function HeroSection() {
           scrolled ? "opacity-0 pointer-events-none" : "opacity-100",
         ].join(" ")}
       >
-        <span className="text-[10px] tracking-[0.2em] uppercase text-white/30 group-hover:text-white/60 transition-colors">
+        <span className="text-[10px] tracking-[0.2em] uppercase text-text-muted/70 group-hover:text-text-secondary transition-colors">
           Scroll
         </span>
-        <div className="w-5 h-8 border border-white/20 rounded-full flex items-start justify-center pt-1.5 group-hover:border-[#25C4CB]/40 transition-colors">
-          <div className="w-1 h-1.5 rounded-full bg-[#25C4CB] animate-bounce" />
+        <div className="w-5 h-8 border border-glass-border rounded-full flex items-start justify-center pt-1.5 group-hover:border-teal-primary/40 transition-colors">
+          <div className="w-1 h-1.5 rounded-full bg-teal-primary animate-bounce" />
         </div>
       </button>
 
@@ -229,7 +229,7 @@ export default function HeroSection() {
       <div
         className="absolute bottom-0 left-0 right-0 h-32 pointer-events-none"
         style={{
-          background: "linear-gradient(to bottom, transparent, #090e0f)",
+          background: "linear-gradient(to bottom, transparent, var(--bg-primary))",
         }}
         aria-hidden="true"
       />

@@ -29,7 +29,7 @@
 import React from "react";
 
 interface LogoProps {
-  variant?: "light" | "dark";
+  variant?: "light" | "dark" | "dynamic";
   size?: number;
   className?: string;
 }
@@ -72,7 +72,7 @@ function arcPath(
 // Component
 // ---------------------------------------------------------------------------
 export default function Logo({
-  variant = "light",
+  variant = "dynamic",
   size = 180,
   className = "",
 }: LogoProps) {
@@ -118,9 +118,9 @@ export default function Logo({
   const totalHeight    = padding * 2 + circleDiameter;
 
   // Colour tokens from brand guide
-  const tealLight      = "#25C4CB";
-  const tealDark       = "#1A8C96";
-  const wordmarkColor  = variant === "dark" ? "#FFFFFF" : "#0D2326";
+  const tealLight      = "var(--teal-primary, #25C4CB)";
+  const tealDark       = "var(--teal-dark, #1A8C96)";
+  const wordmarkColor  = variant === "dark" ? "#FFFFFF" : (variant === "light" ? "#0D2326" : "currentColor");
 
   // Unique gradient ID (avoids SVG conflicts when multiple logos on page)
   const gradientId     = `vnertia-arc-gradient-${variant}`;
