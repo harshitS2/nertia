@@ -1,0 +1,147 @@
+/**
+ * globals.css
+ *
+ * Global styles for Vnertia.com — Tailwind CSS v4 (CSS-first config).
+ *
+ * In Tailwind v4, ALL configuration happens here using @theme.
+ * @import rules must come FIRST (before any other rules).
+ *
+ * Sections:
+ *   1.  Google Fonts import (must be first @import)
+ *   2.  Tailwind v4 import
+ *   3.  @theme — brand design tokens (colours, fonts, animations)
+ *   4.  Base HTML resets
+ *   5.  Utility layer — custom helpers
+ *   6.  Scrollbar + selection styles
+ */
+
+/* ============================================================
+   1. Google Fonts — must come before all other rules in CSS v4
+   Inter is the closest match to the geometric sans-serif in the
+   Vnertia brand guide.
+   ============================================================ */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+/* ============================================================
+   2. Tailwind v4 — single import replaces the three v3 directives
+   ============================================================ */
+@import "tailwindcss";
+
+/* ============================================================
+   3. @theme — Vnertia brand design tokens
+      These become Tailwind utility classes:
+        bg-teal-primary, text-navy, animate-arc-spin, etc.
+   ============================================================ */
+@theme {
+  /* Brand colour palette (from the Vnertia identity guide) */
+  --color-teal-primary:  #25C4CB;
+  --color-teal-dark:     #1A8C96;
+  --color-teal-light:    #94D3D8;
+  --color-navy:          #0D2326;
+  --color-navy-deep:     #060f10;
+  --color-slate-brand:   #2B5156;
+
+  /* Font families */
+  --font-family-inter: "Inter", "Helvetica Neue", Arial, sans-serif;
+  --font-family-sans:  "Inter", "Helvetica Neue", Arial, sans-serif;
+
+  /* Animations registered for use as animate-* classes */
+  --animate-arc-spin:    arcSpin 12s linear infinite;
+  --animate-float:       float 6s ease-in-out infinite;
+  --animate-fade-in-up:  fadeInUp 0.65s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+
+  /* Keyframe definitions */
+  @keyframes arcSpin {
+    from { transform: rotate(0deg);   }
+    to   { transform: rotate(360deg); }
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0);     }
+    50%       { transform: translateY(-12px); }
+  }
+
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0);    }
+  }
+}
+
+/* ============================================================
+   4. Base HTML resets
+   ============================================================ */
+@layer base {
+  html, body {
+    font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
+    -webkit-font-smoothing:  antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+  }
+
+  /* Match hero background colour on load — prevents white flash */
+  body {
+    background-color: #060f10;
+    color: #ffffff;
+  }
+
+  /* Clean link reset — components apply their own styles */
+  a { color: inherit; text-decoration: none; }
+
+  /* Teal brand focus ring for keyboard accessibility */
+  :focus-visible {
+    outline: 2px solid #25C4CB;
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+
+  /* Button reset — components apply their own styles */
+  button {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    font-family: inherit;
+  }
+}
+
+/* ============================================================
+   5. Utility layer — custom helpers
+   ============================================================ */
+@layer utilities {
+  /* Teal gradient text — used on headline accent words */
+  .text-gradient-teal {
+    background: linear-gradient(135deg, #25C4CB, #94D3D8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Glass card — subtle frosted-glass background */
+  .glass {
+    background: rgba(255, 255, 255, 0.04);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  /* Ambient teal glow shadow */
+  .glow-teal { box-shadow: 0 0 40px rgba(37, 196, 203, 0.25); }
+}
+
+/* ============================================================
+   6. Custom scrollbar — subtle branded style
+   ============================================================ */
+::-webkit-scrollbar       { width: 6px; }
+::-webkit-scrollbar-track { background: #060f10; }
+::-webkit-scrollbar-thumb { background: #2B5156; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #1A8C96; }
+
+/* ============================================================
+   7. Text selection — teal highlight colour
+   ============================================================ */
+::selection {
+  background: rgba(37, 196, 203, 0.25);
+  color: #ffffff;
+}
