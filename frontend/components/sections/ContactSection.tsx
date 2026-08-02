@@ -197,6 +197,7 @@ export default function ContactSection() {
                     placeholder="Your name"
                     required
                     className={inputClass}
+                    suppressHydrationWarning
                   />
                 </div>
                 <div>
@@ -211,6 +212,7 @@ export default function ContactSection() {
                     onChange={handleChange}
                     placeholder="Your company"
                     className={inputClass}
+                    suppressHydrationWarning
                   />
                 </div>
               </div>
@@ -229,6 +231,7 @@ export default function ContactSection() {
                   placeholder="you@company.com"
                   required
                   className={inputClass}
+                  suppressHydrationWarning
                 />
               </div>
 
