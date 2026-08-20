@@ -24,6 +24,7 @@ import express, { Request, Response, NextFunction } from "express";
 import dotenv from "dotenv";
 import { corsMiddleware } from "./middleware/cors";
 import contactRouter from "./routes/contact";
+import registerRouter from "./routes/register";
 
 // Load environment variables from .env file
 dotenv.config();
@@ -68,6 +69,9 @@ app.get("/api/health", (_req: Request, res: Response) => {
 
 // Contact form submissions — POST /api/contact
 app.use("/api/contact", contactRouter);
+
+// Registration submissions — POST /api/register
+app.use("/api/register", registerRouter);
 
 // ---------------------------------------------------------------------------
 // 404 handler — catches any unmatched routes
